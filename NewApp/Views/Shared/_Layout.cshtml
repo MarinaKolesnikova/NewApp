@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+   
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                < <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MyPlan", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "position:absolute; top:0px; left:1.8em; font-size:36px" })
+            </div>
+            <div class="navbar-collapse collapse" style="position:absolute; right:3.6em; font-size:18px;">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Авторизація", "Authorization", "Account")</li>
+                    <li>@Html.ActionLink("Реєстрація", "Registration", "Account")</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav id="navB" ; class="">
+        <ul id="linksul" ; class="">
+            <li id="linksli" ; class="bw">
+                <img src="~/images/caldr.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Календар", "Index", "Home", null, new { @class = "linksa" })
+
+            </li>
+            <li id="linksli" ; class="bw">
+                <img src="~/images/meet.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Зустрічі", "Meeting", "Meeting", null, new { @class = "linksa" })
+            </li>
+            <li id="linksli" ; class="bw">
+                <img src="~/images/cont.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Контакти", "Contacts", "Contact", null, new { @class = "linksa" })
+            </li>
+
+            <li id="linksli" ; class="S">
+                <img src="~/images/set.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Налаштування", "Settings", "Settings", null, new { @class = "linksa" })
+            </li>
+        </ul>
+    </nav>
+    <div id="cont" >
+        <div style=" margin-left:10px; padding-top: 10px;  margin-bottom:17px; ">
+            @RenderBody()
+
+            
+
+            @*@RenderSection("scripts", required: false)*@
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@model NewApp.Models.Account
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width" />
+    <title>Authorization</title>
+</head>
+<body style="background: #22242b;">
+
+   
+    <div style="background: rgba(255, 255, 255, 0.18) ; color:#ffffff ;font-size:22px; margin: 10em 18em;text-align:center;padding: 20px;">
+        <div style="margin-left: 10%; margin-right: 90%;">
+            <input type="button" onclick="location.href='@Url.Action("Registration", "Account")'" value="Регістрація" class="btn btn-warning" style="color:#000000; font-size:18px; ">
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Account</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.login, htmlAttributes: new { @class = "forLabel" })
+
+                <div style="width:100%; display: inline-table; ">
+                    <div style="display: inline-table; position:relative; width:30%; left:15%; right:40%;">
+                        @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "long-textbox" } }) @*, new { htmlAttributes = new { @class = "form-control" } }*@
+                    </div>
+                    <div style="position:relative ; right:1%; left:15%; width:30% ;display: inline-table;">
+                        @Html.ValidationMessageFor(model => model.login, "", new { @class = "errorT" })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.password)
+                <div style="width:100%; display: inline-table; ">
+                    <div style="display: inline-table; position:relative; width:30%; left:15%; right:40%;">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "long-textbox", type = "password" } })
+                    </div>
+                    <div style="position:relative ; right:1%; left:15%; width:30% ;display: inline-table;">
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "errorT" })
+                    </div>
+                </div>
+
+            </div>
+            <div style="margin-left:25%; margin-right:25%;"><p  class = "errorT"> @ViewData["Message"]</p></div>
+            <div class="form-group">
+                <div style=" width:40%; margin-left:30%; margin-right:30%">
+                    <input type="submit" value="Увійти" formaction=@Url.Action("LogIn","Account") class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to App", "Index", "Home")
+        </div>
+    </div>
+</body>
+</html>

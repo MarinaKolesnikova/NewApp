@@ -1,0 +1,69 @@
+﻿@model NewApp.Models.Account
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <title>Registration</title>
+</head>
+<body class="reg">
+    <div style="background: rgba(255, 255, 255, 0.18) ; font-size:22px; padding: 20px; min-height:300px; width:1200px; min-width:1000px;
+display: block; margin-left: auto; margin-right: auto; margin-top:220px; overflow:hidden;">
+
+        <div style="margin-left: auto; margin-right: auto;">
+            <input type="button" onclick="location.href='@Url.Action("Authorization", "Account")'"value="Авторизація" class="btn btn-warning" style="color:#000000; font-size:18px; ">
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <h4 style="font-size:36px; text-align:center; position:relative; left:30%;  right:30%; width:40%;">Реєстрація</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div style="position:relative; position:relative; left:5%;  right:5%; width:90%; text-align:center">
+                <div style="display:inline-block; margin:5px 5px;text-align:right; width:30%;">
+                    <p> @Html.LabelFor(model => model.login, "Логін", new { @class = "reglabel"  })</p>
+                    <p>@Html.LabelFor(model => model.password, "Пароль", new { htmlAttributes = new { @class = "reglabel" } })</p>
+                    <p> @Html.LabelFor(model => model.passConfirm, "Повторити пароль", new { @class = "reglabel" })</p>
+                </div>
+
+                <div style="display:inline-block; margin:5px 5px; text-align:center;width:30%;">
+                    <p>@Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "long-textbox", autocomplete = "off" } })</p>
+                    <p>@Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "long-textbox", type = "password", autocomplete = "off" } })</p>
+                    <p>@Html.EditorFor(model => model.passConfirm, new { htmlAttributes = new { @class = "long-textbox" , type = "password" , autocomplete = "off" } })</p>
+                </div>
+                <div style="display:inline-block;  margin:5px 5px; text-align:left; width:30%;">
+                    <p> @Html.ValidationMessageFor(model => model.login, "", new { @class = "errorT" })</p>
+                    <p> @Html.ValidationMessageFor(model => model.password, "", new { @class = "errorT" })</p>
+                    <p> @Html.ValidationMessageFor(model => model.passConfirm, "", new { @class = "errorT" })</p>
+                </div>
+
+
+                <div style="position:relative; left:40%; width:20%; right:40%; text-align:center;">
+                    <input type="submit" value="Створити акаунт" formaction=@Url.Action("Verific", "Account") class="btn btn-primary" />
+                </div>
+
+
+                <div style="position:relative;left:20%; width:60%; right:20%; text-align:center;">
+                    <p>@ViewData["Message"]</p>
+                </div>
+
+
+                <script src="~/Calndr/lib/jquery.min.js"></script>
+                <script src="~/Scripts/bootstrap.min.js"></script>
+                <script src="~/Scripts/jquery.validate.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+            </div>
+
+        }</div>
+
+           
+</body>
+</html>

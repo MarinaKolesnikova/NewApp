@@ -1,0 +1,126 @@
+﻿@model IEnumerable<NewApp.Models.Contacts>
+
+@{
+    ViewBag.Title = "Contacts";
+    Layout = null;
+
+}
+<head>
+<link rel="stylesheet" href="~/Content/bootstrap.css">
+<link rel="stylesheet" href="~/Calndr/jquery-ui.css">
+<link rel="stylesheet" href="~/Calndr/fullcalendar.css">
+<link rel="stylesheet" href="~/Content/Style.css">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="~/Calndr/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/Contact.js"></script>
+</head>
+<body style="margin-bottom:45px;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MyPlan", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "position:absolute; left:1.8em; font-size:36px" })
+            </div>
+            <div class="navbar-collapse collapse" style="position:absolute; right:3.6em; font-size:18px;">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Авторизація", "Authorization", "Account")</li>
+                    <li>@Html.ActionLink("Реєстрація", "Registration", "Account")</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <nav id="navB" ; class="">
+        <ul id="linksul" ; class="">
+            <li id="linksli" ; class="bw">
+                <img src="~/images/caldr.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Календар", "Index", "Home", null, new { @class = "linksa" })
+
+            </li>
+
+            @if (ViewBag.VIP == 1)
+            {
+            <li id="linksli" ; class="bw">
+                <img src="~/images/meet.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Зустрічі", "Meeting", "Meeting", null, new { @class = "linksa" })
+            </li>}
+            else
+            {
+            <li id="linksli" ; class="bw" onclick="alert('Розділом ЗУСТРІЧІ можуть користуватися лише VIP користувачі')">
+                <img src="~/images/meet.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Зустрічі", "Meeting", "Meeting", null, new { @class = "linksa disabledcont" })
+            </li>}
+
+                <li id="linksli" ; class="bw">
+                    <img src="~/images/cont.png" class="card-img-top" alt="no image">
+                    @Html.ActionLink("Контакти", "Contacts", "Contact", null,
+        new { @class = "linksa" })
+                </li>
+
+                <li id="linksli" ; class="S">
+                    <img src="~/images/set.png" class="card-img-top" alt="no image">
+                    @Html.ActionLink("Налаштування", "Settings", "Settings", null,
+                new { @class = "linksa" })
+                </li>
+        </ul>
+    </nav>
+
+
+    <div id="cont" style="top:50px; height:680px; margin-bottom:18px;">
+        <div style=" margin-left:10px; ">
+            <h2 style="margin:15px 0px 15px 30px; color:#ffffff">Контакти</h2>
+
+            <div style=" position:absolute; left:5em;">
+
+                <p>
+                    <input type="search" class="search" id="searchLine" placeholder="Пошук контактів" />
+
+                </p>
+                <p>
+                    <button id="addContact" class="contButtons">Додати</button>
+                </p>
+                <div id="flo" style="overflow:auto; height:690px"></div>
+
+                <div id="dialog" style="background-color:#22242b; width:350px; overflow:hidden;">
+                    <form style="width:90%; margin-left:5%; margin-left:5%;" name="Контакт">
+                        <div class="form-group">
+                            <label for="contName" style="color:#ffffff">Ім'я</label>
+                            <input autocomplete="off" class="form-control" id="contName" type="text" placeholder="Default input" aria-label="default input example">
+                        </div>
+                        <div class="form-group">
+                            <label for="contSurname" style="color:#ffffff">Прізвище</label>
+                            <input class="form-control" autocomplete="off" id="contSurname" type="text" placeholder="Default input" aria-label="default input example">
+                        </div>
+                        <div class="form-group">
+                            <label for="phNumber" style="color:#ffffff">Телефон</label>
+                            <input class="form-control" autocomplete="off" id="phNumber" type="text" placeholder="Default input" aria-label="default input example">
+                        </div>
+                        <div class="form-group">
+                            <label id="error" style="color:#ff0000"></label>
+                            <div style="text-align:center">
+
+                                <button type="button" id="btnDelete" style="left:10px" class="btn btn-danger">Delete</button>
+                                <button type="button" id="btnSave" style="right:10px" class="btn btn-success">Save</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <script src="~/Calndr/lib/moment.min.js"></script>
+
+                <script src="~/Scripts/Contact.js"></script>
+
+            </div>
+        </div>
+    </div>
+</body>

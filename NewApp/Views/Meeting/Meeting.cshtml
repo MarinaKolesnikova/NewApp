@@ -1,0 +1,99 @@
+﻿@model IEnumerable<NewApp.Models.Meeting>
+
+@{
+    ViewBag.Title = "Meeting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.css">
+<link href="~/Content/tiny-toggle.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Calndr/jquery-ui.css">
+<link rel="stylesheet" href="~/Calndr/fullcalendar.css">
+<link rel="stylesheet" href="~/Content/Style.css">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="~/Calndr/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" />
+<!--multiselect-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="~/Scripts/js/tiny-toggle.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<h2 style="margin:15px 0px 15px 30px; color:#ffffff; font-size:32px;">Зустрічі</h2>
+<div style=" position:absolute; left:50px;">
+    <p>
+        <input type="search" class="search" style="margin-left:25px;" id="searchLine" placeholder="Пошук за ключовим словом або датою" />
+        <input type="submit" class="contButtons" id="searchButton" value="Найти">
+    </p>
+    <p>
+        <button id="addContact" class="contButtons" style="margin-bottom:5px;margin-left:25px; margin-top:10px;">Додати</button>
+    </p>
+
+    <div id="part" style="overflow:auto; height:650px; width:1530px"></div>
+
+    <div id="dialog" style="background-color:#22242b; width:370px; overflow:hidden;">
+        <form style="width:99%; margin-left:0.5%; margin-left:0.5%; " name="Зустріч">
+            <div class="form-group">
+                <label for="title" style="color:#ffffff">Опис зустрічі</label>
+                <input type="text" style="max-width:310px;" autocomplete="off" class="form-control" id="title" placeholder="назва події">
+            </div>
+            <div class="form-group">
+                <label for="start " style="color:#ffffff">Початок зустрічі</label>
+                <input readonly type="text" style="max-width:310px;" class="form-control datepicker " id="start" placeholder="початок події">
+            </div>
+            <div class="form-group">
+                <label for="place" style="color:#ffffff">Місце зустрічі</label>
+                <textarea class="form-control" style="resize:none;max-width:310px" id="place" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="description" style="color:#ffffff">Учасники</label>
+                <textarea class="form-control" style="resize:none; max-width:310px" id="participants" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="description" style="color:#ffffff">Подробиці</label>
+                <textarea class="form-control" style="resize:none; max-width:310px" id="description" rows="3"></textarea>
+            </div>
+            <label for="contacts" style="color:#ffffff">Додати контакти</label>
+            <div class="s2-example">
+                <p>
+                    <select class="js-example-basic-multiple js-states form-control" style="width:310px; max-height:100px; overflow:auto;" id="contacts" multiple="multiple"></select>
+                </p>
+            </div>
+
+            @if (ViewBag.Vip == 1)
+            {
+                <div style="display:inline-table">
+                    <label style="color:white; margin-right:6em;">Надіслати повідомлення</label>
+                    <input type="checkbox" class="tiny-toggle" id="pushOn" />
+                </div>
+
+            }
+            else
+            {
+                <div style="display:inline-table">
+                    <label style="color:#b3b0b0; margin-right:6em;">Доступно для VIP</label>
+
+                    <input type="checkbox" class="tiny-toggle" id="pushOn" checked disabled />
+                    </div>
+
+
+                    }
+                    <div class="form-group">
+                        <label id="error" style="color:#ff0000"></label>
+                        <div style="text-align:center">
+
+                            <button type="button" id="btnDelete" style="left:10px" class="btn btn-danger">Delete</button>
+                            <button type="button" id="btnSave" style="right:10px" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+            </form>
+    </div>
+</div>
+<script src="~/Calndr/lib/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js"></script>
+
+<script src="~/Scripts/meet.js"></script>
+

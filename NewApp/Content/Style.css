@@ -1,0 +1,266 @@
+﻿body {
+    background: linear-gradient(135deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    background-size: auto;
+}
+#cont {
+    position: relative;
+    top:2px;
+    left: 260px;
+    bottom: 5px;
+    /*  overflow:auto;*/
+    /* Высота блока */
+    min-height: 865px;
+    min-width: 1610px;
+    
+    /* Ширина блока */
+    margin: 10px 13px;
+    /* Добавляем полосы прокрутки */
+    background: rgba(0,0,0,0.65); /* Цвет фона, */
+    display: inline-flex;
+}
+
+#navB {
+    margin: 2em 0px 0px 0px;
+    position:fixed;
+    bottom:0px;
+    top:20px;
+    width:260px;
+    height:auto;
+    background: #22242b;
+}
+#linksli:hover {
+    background: #424654;
+}
+#linksli {
+    
+    padding:0px 2px 0px 2px;
+    background: #22242b;
+    border: solid;
+    border-color: #ffffff;
+     border-width: 0.1px;
+     height: 60px;
+    display: block;
+    width: 250px;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.8;
+}
+.bw {
+    margin: 3px 0px;
+}
+.linksa {
+    text-decoration: none;
+    font-size: 26px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    top: 15%;
+    left: 10%;
+}
+.linksa:hover {
+        color: #ffffff;
+        text-decoration: none;
+       
+    }
+.S {
+    /*position: relative;
+    bottom:20px;
+    top:40em;*/
+    margin: 41em 5px 1em 5px;
+   
+}
+#linksul {
+    padding: 3em 0 0 0;
+    background: #22242b;
+}
+.ur {
+    color: #ffffff;
+    text-decoration: underline;
+    text-align:center;
+    position:relative;
+    left: 35%;
+    width: 30%;
+    right: 35%;
+    display:block;
+}
+.ur:hover{
+    color:#e503b4;
+   
+}
+.long-textbox {
+   color:#22242b;
+    width: 300px;
+    height:30px;
+   
+  
+}
+.forLabel {
+    text-align:left;
+    color: #ffffff;
+}
+.select2-selection--multiple {
+    overflow:auto ;
+    height: auto ;
+    max-height:80px
+}
+.select2-selection__clear{
+    visibility:hidden;
+}
+.search {
+    max-width: 1200px;
+    width: 1250px;
+    height: 40px;
+    font-size: 24px;
+    text-align: left;
+    padding: 1px 3px 2px 5px;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: solid;
+    border-color: rgba(255, 255, 255, 0.7);
+    border-width: 0.1px;
+    display: inline-flex;
+}
+.contButtons {
+    border: solid;
+    border-color: rgba(255, 255, 255, 0.7);
+    border-width: 0.1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #89b4ff;
+    font-size:23px;
+    min-width: 100px;
+    width:auto;
+    height: 40px;
+}
+#calendar{
+    padding-top:15px;
+    padding-left:35px;
+    right:35px;
+}
+.contTable {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.87);
+    position: relative;
+    top: 15px;
+    left: 30px;
+    font-style:normal;
+}
+#reglabel {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #ffffff;
+    padding-right:20px;
+ 
+}
+.reg {
+    color: #ffffff;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    background: #22242b;
+   
+}
+.errorT{
+    color:#ff7070;
+}
+.ftable {
+    table-layout: fixed;
+    border: solid;
+    border-color: rgba(0,0,0,0.65);
+    border-width: 0.1px;
+    display: inline-block;
+    text-align: center;
+    margin: 1em 0em 0em 1em;
+    color: #fff;
+    overflow: hidden;
+    font-size: 25px;
+    width: 450px;
+    height: 297px;
+    background-color: rgba(0,0,0,0.4);
+}
+.fth {
+    width: 100%;
+    text-align: center;
+    border: solid;
+    border-color: rgba(255, 255, 255, 0.87);
+    border-width: 0.1px;
+    border-collapse: collapse;
+    height: 40px;
+    max-height: 40px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+.ftr {
+    text-overflow: ellipsis;
+    max-height: 40px;
+    overflow: hidden;
+}
+.ftd {
+    border-right: solid;
+    border-right-color: rgba(255, 255, 255, 0.87);
+    border-right-width: 0.1px;
+    border-collapse: collapse;
+    
+    height: 72px;
+    min-width: 150px;
+    width: 225px;
+    line-height:27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.tarea {
+    background: none;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    line-height: 27px;
+    max-width: 445px;
+    width:445px;
+    resize: none;
+    border:none;
+    text-align:center;
+
+}
+.tareaCell {
+    padding:2px 2px;
+    background: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 27px;
+    max-width: 222px;
+    width: 222px;
+    resize: none;
+    border: none;
+    text-align: center;
+}
+
+.forPush{
+    border:solid;
+    border-width:0.1px;
+    border-color:#fff;
+    color:#fff;
+    margin:2em 0px 0px 3em;
+    width:400px;
+    height:auto;
+    padding:5px;
+    font-size:22px;
+    text-align:center;
+    }
+.forSet {
+    border: solid;
+    border-width: 0.1px;
+    border-color: #fff;
+    border-collapse: collapse;
+    color: #fff;
+}
+img{
+    display:inline-table;
+}
+.disabledcont {
+    pointer-events: none;
+    opacity: 0.4;
+}
+.card-img-top {
+    position:absolute;
+    left:10px;
+    height: 45px;
+    margin: 3% 50px 3% 10px;
+  
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<NewApp.Models.Contacts>
+
+@{
+    ViewBag.Title = "Contacts";
+    Layout = null; }
+<div id="flo">
+    <table class="table contTable" style="max-width:1100px; ">
+        <tr style="font-size:24px;">
+
+            <th>
+                Прізвище
+            </th>
+            <th>
+                Ім'я
+            </th>
+            <th>
+                Номер телефону
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr style="font-family: Courier New, Courier, monospace">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.contSurname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.phNumber)
+                </td>
+                <td>
+                    <button value="@item.ContId" , style="color:#89b4ff" id="edit" class="btnEdit contButtons" onclick="red(this.value)">edit</button>
+                    <button value="@item.ContId" , style="color:#89b4ff" id="delete" class="btnDelete contButtons" onclick="del(this.value)">delete</button>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ContId }, new { @style = "color:#89b4ff", value =" @item.ContId", onclick = "alert(value)" })
+        @Html.ActionLink("Delete", "", new { /*id = item.ContId */}, new { @style = "color:#89b4ff", id = "delete", value = "@item.ContId" })
+                    *@
+                </td>
+            </tr>
+        }
+    </table>
+    </div>

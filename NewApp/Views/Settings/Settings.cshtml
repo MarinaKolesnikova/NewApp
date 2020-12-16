@@ -1,0 +1,161 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Settings";
+    Layout = null;
+}
+<head>
+<link rel="stylesheet" href="~/Content/bootstrap.css">
+<link href="~/Content/tiny-toggle.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/Calndr/jquery-ui.css">
+<link rel="stylesheet" href="~/Content/Style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="~/Calndr/jquery-ui.min.js"></script>
+<script src="~/Scripts/js/tiny-toggle.js"></script>
+</head>
+<body style="margin-bottom:45px;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MyPlan", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "position:absolute; left:1.8em; font-size:36px" })
+            </div>
+            <div class="navbar-collapse collapse" style="position:absolute; right:3.6em; font-size:18px;">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Авторизація", "Authorization", "Account")</li>
+                    <li>@Html.ActionLink("Реєстрація", "Registration", "Account")</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <nav id="navB" ; class="">
+        <ul id="linksul" ; class="">
+            <li id="linksli" ; class="bw">
+                <img src="~/images/caldr.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Календар", "Index", "Home", null, new { @class = "linksa" })
+
+            </li>
+
+            @if (ViewBag.VIP == 1)
+            {
+                <li id="linksli" ; class="bw">
+                    <img src="~/images/meet.png" class="card-img-top" alt="no image">
+                    @Html.ActionLink("Зустрічі", "Meeting", "Meeting", null, new { @class = "linksa" })
+                </li>}
+            else
+            {
+                <li id="linksli" ; class="bw" onclick="alert('Розділом ЗУСТРІЧІ можуть користуватися лише VIP користувачі')">
+                    <img src="~/images/meet.png" class="card-img-top" alt="no image">
+                    @Html.ActionLink("Зустрічі", "Meeting", "Meeting", null, new { @class = "linksa disabledcont" })
+                </li>}
+
+            <li id="linksli" ; class="bw">
+                <img src="~/images/cont.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Контакти", "Contacts", "Contact", null,
+    new { @class = "linksa" })
+            </li>
+
+            <li id="linksli" ; class="S">
+                <img src="~/images/set.png" class="card-img-top" alt="no image">
+                @Html.ActionLink("Налаштування", "Settings", "Settings", null,
+            new { @class = "linksa" })
+            </li>
+        </ul>
+    </nav>
+
+
+    <div id="cont" style="top:50px; height:680px; margin-bottom:18px;">
+        <div style=" margin-left:10px;">
+            <h2 style="margin:15px 0px 15px 30px; color:#ffffff; font-size:32px;">Налаштування</h2>
+            @if (ViewBag.VIP == 1)
+            {
+
+                <div class="forPush" style="height:380px;">
+
+                    <div style="display:inline-table">
+                        <div class="forSet" style="display:inline-table; width:100%">
+                            <p>Налаштування email-повідомлень</p>
+                        </div>
+                        <label style="color:white; height:40px; margin-right:2em;">Надіслати повідомлення</label>
+                        <input type="checkbox" class="tiny-toggle" id="pushOn" />
+                    </div>
+                    <div id="box" class="disabledcont">
+                        <label for="email">Введіть e-mail</label>
+                        <input autocomplete="off" id="emailT" style="height:30px; color:#000000 ;width:90%; margin-bottom:20px;" />
+
+                        <p>
+                            <label for="spinner">За </label>
+                            <input id="spinnerH" style="width:3em" input type="text" name="value">
+                            <label for="spinner">Год.</label>
+                            <input id="spinnerM" style="width:3em" input type="text" name="value">
+                            <label for="spinner">Хв.</label>
+                        </p>
+
+                        <div style="display:inline-table">
+                            <label style="color:white; height:40px; margin-right:2em;">Для всіх зустрічей</label>
+                            <input type="checkbox" class="tiny-toggle" id="allOn" />
+                        </div>
+                        <button type="button" id="bSave" style="margin-left:30%; margin-right:30%; width:40%;" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            }
+            else
+
+            { <label style="color:white; margin-left:3em; font-size:24px;">Цей розділ доступний лише для VIP клієнтів</label>
+
+                <div class="disabledcont">
+                    <div class="forPush" style="height:380px;">
+
+                        <div style="display:inline-table">
+                            <div class="forSet" style="display:inline-table; width:100%">
+                                <p>Налаштування email-повідомлень</p>
+                            </div>
+                            <label style="color:white; height:40px; margin-right:2em;">Надіслати повідомлення</label>
+                            <input type="checkbox" class="tiny-toggle" id="pushOn" />
+                        </div>
+                        <div id="box" style="" class="disabledcont">
+
+                            <input style="height:30px; width:85%; margin-bottom:20px;" placeholder="Введіть e-mail" />
+
+                            <p>
+                                <label for="spinner">За </label>
+                                <input id="spinnerH" style="width:3em" input type="text" name="value">
+                                <label for="spinner">Год:</label>
+                                <input id="spinnerM" style="width:3em" input type="text" name="value">
+                                <label for="spinner">Хв:</label>
+                            </p>
+
+                            <div style="display:inline-table">
+                                <label style="color:white; height:40px; margin-right:2em;">Для всіх зустрічей</label>
+                                <input type="checkbox" class="tiny-toggle" id="allOn" />
+                            </div>
+                            <button type="button" id="btnSave" style="margin-left:30%; margin-right:30%; width:40%;" class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+            <script src="~/Scripts/sett.js"></script>
+
+        </div>
+    </div>
+    <div style="position:absolute; left:350px; top:800px;">
+        <input type="button" id="delAcc" value="Видалити акаунт" class="btn btn-warning" style="color:#000000; font-size:18px; ">
+    </div>
+</body>
+
+
+

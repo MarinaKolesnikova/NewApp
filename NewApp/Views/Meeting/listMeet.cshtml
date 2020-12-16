@@ -1,0 +1,76 @@
+﻿@model IEnumerable<NewApp.Models.Meeting>
+
+<div id="part">
+    @{ string temp = DateTime.Today.ToString("dd-MM-yyyy");
+       
+        foreach (var item in Model)
+
+
+        {
+
+            if (item.dateM.ToString("dd-MM-yyyy") == temp)
+
+            {
+
+
+                <div style="display: inline-flex; ">
+                    <table class="ftable">
+                        <tr class="fth">
+                            <td colspan="6" ; style="color:silver;">  @Html.TextAreaFor(modelItem => item.title, new { @class = "tarea", rows = "1", @readonly = "readonly" })</td>
+                        </tr>
+                        <tr class="fth">
+                            <td class="ftd" colspan="3"> @Html.TextAreaFor(modelItem => item.dateM, new { @class = "tareaCell", rows = "2", @readonly = "readonly" })</td>
+                            <td colspan="3" class="ftd">  @Html.TextAreaFor(modelItem => item.place, new { @class = "tareaCell", rows = "2", @readonly = "readonly" }) </td>
+                        </tr>
+                        <tr class="fth">
+                            <td colspan="6" class="ftr" ; style="color:silver;">@Html.TextAreaFor(modelItem => item.notes, new { @class = "tarea", rows = "2", @readonly = "readonly" })</td>
+                        </tr>
+                        <tr class="fth">
+                            <td class="ftd" colspan="2" ; style="color:silver;">Учасники:</td>
+                            <td colspan="4" class="ftd" ; style="color:silver;">@Html.TextAreaFor(modelItem => item.participants, new { @class = "tareaCell", rows = "2", @readonly = "readonly" })</td>
+                        </tr>
+                        <tr class="fth">
+
+
+                            <td class="ftd" style="height:50px;" colspan="2"> <button value="@item.MeetId" , style="color:#89b4ff; width:97%;height:90%;" id="delete" class="btnDelete contButtons" onclick="del(this.value)">delete</button> </td>
+                            <td colspan="4" style="height:50px;"> <button value="@item.MeetId" , style="color:#89b4ff;  width:97%; height:90%;" id="edit" class="btnEdit contButtons" onclick="red(this.value)">edit</button> </td>
+                        </tr>
+                    </table>
+                </div>
+
+            }
+            else
+            {
+
+                temp = item.dateM.ToString("dd-MM-yyyy");
+                <p style="color:#fff; margin:20px 10px;">________________________________@temp _______________________________</p>
+                
+                    <div style="display: inline-flex;">
+                        <table class="ftable">
+                            <tr class="fth">
+                                <td colspan="6" ; style="color:silver;">  @Html.TextAreaFor(modelItem => item.title, new { @class = "tarea", rows = "1", @readonly = "readonly" })</td>
+                            </tr>
+                            <tr class="fth">
+                                <td class="ftd" colspan="3"> @Html.TextAreaFor(modelItem => item.dateM, new { @class = "tareaCell", rows = "2", @readonly = "readonly" })</td>
+                                <td colspan="3" class="ftd">  @Html.TextAreaFor(modelItem => item.place, new { @class = "tareaCell", rows = "2", @readonly = "readonly" }) </td>
+                            </tr>
+                            <tr class="fth">
+                                <td colspan="6" class="ftr" ; style="color:silver;">@Html.TextAreaFor(modelItem => item.notes, new { @class = "tarea", rows = "2", @readonly = "readonly" })</td>
+                            </tr>
+                            <tr class="fth">
+                                <td class="ftd" colspan="2" ; style="color:silver;">Учасники:</td>
+                                <td colspan="4" class="ftd" ; style="color:silver;">@Html.TextAreaFor(modelItem => item.participants, new { @class = "tareaCell", rows = "2", @readonly = "readonly" })</td>
+                            </tr>
+                            <tr class="fth">
+
+
+                                <td class="ftd" style="height:50px;" colspan="2"> <button value="@item.MeetId" , style="color:#89b4ff; width:97%;height:90%;" id="delete" class="btnDelete contButtons" onclick="del(this.value)">delete</button> </td>
+                                <td colspan="4" style="height:50px;"> <button value="@item.MeetId" , style="color:#89b4ff;  width:97%; height:90%;" id="edit" class="btnEdit contButtons" onclick="red(this.value)">edit</button> </td>
+                            </tr>
+                        </table>
+                    </div>
+               
+            }
+        }
+    }
+</div>
